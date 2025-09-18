@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0F172A;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Moving Circle Background */
+.jelly-wrapper {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  animation: moveAcross 25s ease-in-out infinite alternate;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.jelly-circle {
+  width: 60vw;
+  height: 60vw;
+  background: linear-gradient(to top right, #1e293b, #334155);
+  /* Matching background */
+  border-radius: 50%;
+  animation: jellyWobble 2s ease-in-out infinite;
+  opacity: 0.25;
+}
+
+@keyframes moveAcross {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes jellyWobble {
+
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  25% {
+    transform: scale(1.1, 0.9);
+  }
+
+  50% {
+    transform: scale(0.9, 1.1);
+  }
+
+  75% {
+    transform: scale(1.05, 0.95);
+  }
+}
